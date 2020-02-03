@@ -1,13 +1,14 @@
 package com.luisdengra.practica3;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Principal {
     private static Scanner input;
-
+    Sorteo sorteo = new Sorteo();
     public Principal() {
-        Sorteo sorteo = new Sorteo();
+
 
         input = new Scanner(System.in);
         int opcion;
@@ -17,7 +18,6 @@ public class Principal {
             switch (opcion) {
                 case 1:
                     juegoUnico();
-                    sorteo.partidaUnica();
                     break;
                 case 2:
                     //hastaObtenerPremio();
@@ -41,7 +41,7 @@ public class Principal {
 
     }
 
-    private int menuPrincipal() {
+    public int menuPrincipal() {
         int opcion = -1;
         do {
             Lib.limpiarPantalla();
@@ -66,7 +66,7 @@ public class Principal {
         return opcion;
     }
 
-    private void juegoUnico(){
+    public void juegoUnico(){
         int opcion = -1;
         do {
             System.out.println("***JUEGO UNICO***");
@@ -85,10 +85,11 @@ public class Principal {
         switch (opcion){
             case 1:
                 rellenarManual();
-
+                sorteo.partidaUnica(rellenarManual());
                 break;
             case 2:
                  rellenarAutomatico();
+                sorteo.partidaUnica(rellenarAutomatico());
                 break;
 
             case 0:
@@ -101,7 +102,7 @@ public class Principal {
 
 
 
-    public void rellenarManual(){
+    public Boleto rellenarManual(){
 
         int[] boletoAux = new int[6];
         int numero;
@@ -184,16 +185,12 @@ public class Principal {
                 validado = true;
             }
         }while (!validado);
-
+        Arrays.sort(boletoAux);
         Boleto b1 = new Boleto(boletoAux);
 
         System.out.println(b1.toString());
 
-
-
-
-        //boletoAux[6] = Lib.aleatorio(0,9); //este numero es el reintegro, lo guardo en la sexta posicion del array
-
+        return b1;
     }
 
     static boolean busquedaLineal(int[] array, int dato) {
@@ -212,14 +209,17 @@ public class Principal {
         return false;
     }
 
-    public void rellenarAutomatico(){
+    public Boleto rellenarAutomatico(){
         int[] boletoAux = new int[6];
 
         for(int i = 0; i < 6; i++){
             boletoAux[i]=Lib.aleatorio(0,49);
         }
+        Arrays.sort(boletoAux);
         Boleto boletoAutomatico = new Boleto(boletoAux);
         System.out.println(boletoAutomatico.toString());
-
+        return boletoAutomatico;
     }
+
+
 }
