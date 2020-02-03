@@ -14,7 +14,7 @@ public class Bombo {
      * constructor
      */
 
-    public Bombo(int[] bomboPrincipal, int bomboReintegro) {
+    public Bombo(int[] bomboPrincipal) {
         this.bomboPrincipal = bomboPrincipal;
         this.bomboComplementario = Lib.aleatorio(0,49);
         this.bomboReintegro = Lib.aleatorio(0,9);

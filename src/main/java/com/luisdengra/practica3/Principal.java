@@ -7,6 +7,7 @@ public class Principal {
     private static Scanner input;
 
     public Principal() {
+        Sorteo sorteo = new Sorteo();
 
         input = new Scanner(System.in);
         int opcion;
@@ -16,6 +17,7 @@ public class Principal {
             switch (opcion) {
                 case 1:
                     juegoUnico();
+                    sorteo.partidaUnica();
                     break;
                 case 2:
                     //hastaObtenerPremio();
@@ -83,9 +85,10 @@ public class Principal {
         switch (opcion){
             case 1:
                 rellenarManual();
+
                 break;
             case 2:
-                 //rellenarAutomatico();
+                 rellenarAutomatico();
                 break;
 
             case 0:
@@ -186,7 +189,9 @@ public class Principal {
 
         System.out.println(b1.toString());
 
-        juegoUnico();
+
+
+
         //boletoAux[6] = Lib.aleatorio(0,9); //este numero es el reintegro, lo guardo en la sexta posicion del array
 
     }
@@ -207,11 +212,14 @@ public class Principal {
         return false;
     }
 
-    public Boleto[] rellenarAutomatico(){
-        Boleto[] boletoAutomatico = new Boleto[7];
+    public void rellenarAutomatico(){
+        int[] boletoAux = new int[6];
+
         for(int i = 0; i < 6; i++){
-            //boletoAutomatico[i]=Lib.aleatorio(0,49)
+            boletoAux[i]=Lib.aleatorio(0,49);
         }
-        return boletoAutomatico;
+        Boleto boletoAutomatico = new Boleto(boletoAux);
+        System.out.println(boletoAutomatico.toString());
+
     }
 }
