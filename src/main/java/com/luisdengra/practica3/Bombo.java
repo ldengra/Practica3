@@ -33,7 +33,7 @@ public class Bombo {
     }
 
     public int sacarBola(){
-        int pos = Lib.aleatorio(min, contador);
+        int pos = Lib.aleatorio(min, contador-1);
         int bola;
         bola = bolas[pos];
         bolas[pos] = bolas[contador-1];
