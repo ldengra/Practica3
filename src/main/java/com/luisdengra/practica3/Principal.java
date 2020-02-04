@@ -84,11 +84,9 @@ public class Principal {
 
         switch (opcion){
             case 1:
-                rellenarManual();
                 sorteo.partidaUnica(rellenarManual());
                 break;
             case 2:
-                 rellenarAutomatico();
                 sorteo.partidaUnica(rellenarAutomatico());
                 break;
 
