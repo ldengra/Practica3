@@ -12,8 +12,9 @@ public class Sorteo {
         for(int i = 0; i < bolasGanadoras.length; i++){
             bolasGanadoras[i] = bombo.sacarBola();
         }
-        nCoincidencias= comprobarApuesta(b1, bolasGanadoras);
+
         Arrays.sort(bolasGanadoras);
+
 
         System.out.printf("Los numeros del sorteo son:   ");
 
@@ -22,10 +23,11 @@ public class Sorteo {
             }
 
         System.out.println();
-        System.out.println(nCoincidencias);
+        comprobarApuesta(b1, bolasGanadoras);
+
     }
 
-    public int comprobarApuesta(Boleto b1, int[] bolasGanadoras){
+    public void comprobarApuesta(Boleto b1, int[] bolasGanadoras){
         int nCoincidencias = 0;
         for(int i = 0; i < 6; i++){
             for(int j = 0; j < bolasGanadoras.length; j++){
@@ -34,11 +36,20 @@ public class Sorteo {
                 }
             }
         }
-        return nCoincidencias;
+
 
         switch (nCoincidencias){
+            case 0:
+
             case 1:
-                System.out.println("No has sido premiado");
+
+            case 2:
+                System.out.println("Tu boleto no ha sido premiado.");
+                break;
+            case 3:
+                System.out.println("Tu boleto ha sido premiado con el 5º premio!!!!");
+                break;
+
         }
     }
 
